@@ -10,10 +10,10 @@ namespace BernieApp.Common.Http
         private IssuesClient _issuesClient;
         private NewsClient _newsClient;
 
-        public BernieHttpClient()
+        public BernieHttpClient(IHttpClient httpClient)
         {
-            _newsClient = new NewsClient();
-            _issuesClient = new IssuesClient();
+            _newsClient = new NewsClient(httpClient);
+            _issuesClient = new IssuesClient(httpClient);
         }
 
         public async Task<IEnumerable<HitDataItem<NewsArticle>>> GetNewsAsync()
@@ -36,6 +36,12 @@ namespace BernieApp.Common.Http
                     Value = "_id:" + id
                 }
             });
+        }
+
+        public void Dispose()
+        {
+            _issuesClient.Dispose();
+            _newsClient.Dispose();
         }
     }
 }

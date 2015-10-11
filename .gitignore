@@ -10,3 +10,7 @@ BernieApp.Wpf/bin/
 BernieApp.Common/obj/
 BernieApp.Common/bin/
 .vs/config/applicationhost.config
+BernieApp.Common.Tests/obj/
+BernieApp.Common.Tests/bin/
+BernieApp.Common.Tests.Debug/obj/
+BernieApp.Common.Tests.Debug/bin/

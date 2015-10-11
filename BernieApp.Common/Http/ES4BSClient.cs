@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,18 +10,22 @@ using System.Threading.Tasks;
 
 namespace BernieApp.Common.Http
 {
-    public class ES4BSClient<TResponseType, TDataType> 
+    public class ES4BSClient<TResponseType, TDataType> : IDisposable 
         where TResponseType : ES4BSResponse<TDataType> 
         where TDataType : ArticleData        
     {
         private string _endpoint;
         private string _defaultQueryFilter;
+        private IHttpClient _httpClient;
 
-        public ES4BSClient(string endpoint, string defaultQueryFilter = null)
+        public ES4BSClient(IHttpClient httpClient, string endpoint, string defaultQueryFilter = null)
         {
+            _httpClient = httpClient;
             _endpoint = endpoint;
             _defaultQueryFilter = defaultQueryFilter;
         }
+
+        #region Public Methods
 
         public async Task<IEnumerable<HitDataItem<TDataType>>> GetAsync(IEnumerable<UrlQueryParam> queryParams = null)
         {
@@ -45,16 +50,31 @@ namespace BernieApp.Common.Http
             return item;
         }
 
+        public void Dispose()
+        {
+            _httpClient.Dispose();
+        }
+
+        #endregion
+
+        #region Private Methods
+
         private async Task<TResponseType> GetAsyncRaw(IEnumerable<UrlQueryParam> queryParams)
         {
             var queryStr = ComputeQueryString(queryParams);
             var uri = new Uri(_endpoint + queryStr);
 
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                using (HttpResponseMessage response = await client.GetAsync(uri))
+            using (HttpResponseMessage response = await _httpClient.GetAsync(uri))
+            {
+                switch (response.StatusCode)
+                {
+                    case HttpStatusCode.NotFound:
+                        throw new HttpError404();
+                }
+                Debug.WriteLine("Hello WOrld");
                 using (HttpContent content = response.Content)
                 {
                     string result = await content.ReadAsStringAsync();
@@ -101,5 +121,7 @@ namespace BernieApp.Common.Http
 
             return combinedParamPairs.Count > 0 ? "?" + string.Join("&", combinedParamPairs) : "";
         }
+
+        #endregion
     }
 }

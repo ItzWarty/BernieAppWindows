@@ -4,7 +4,7 @@ namespace BernieApp.Common.Http
 {
     public class NewsClient : ES4BSClient<NewsQueryResponse, NewsArticle>
     {
-        public NewsClient() : base(Endpoints.SitesEN, "article_type:News")
+        public NewsClient(IHttpClient httpClient) : base(httpClient, Endpoints.SitesEN, "article_type:News")
         {
 
         }

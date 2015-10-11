@@ -7,6 +7,11 @@ namespace BernieApp.Common.Design
 {
     public class DesignBernieHttpClient : IBernieHttpClient
     {
+        public void Dispose()
+        {
+            
+        }
+
         public Task<IEnumerable<HitDataItem<Issue>>> GetIssuesAsync()
         {
             return null;
