@@ -144,18 +144,6 @@ C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debu
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\BernieApp.Common.dll
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\Newtonsoft.Json.dll
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\BernieApp.Common.pdb
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\Autofac.xml
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\GalaSoft.MvvmLight.pdb
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\GalaSoft.MvvmLight.xml
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\GalaSoft.MvvmLight.Extras.xml
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\GalaSoft.MvvmLight.Platform.xml
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\GalaSoft.MvvmLight.Platform.pri
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\System.Net.Http.Extensions.xml
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\System.Net.Http.Primitives.xml
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\bin\Debug\Newtonsoft.Json.xml
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\obj\Debug\BernieApp.WindowsPhone.csprojResolveAssemblyReference.cache
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\obj\Debug\App.g.i.cs
@@ -261,5 +249,4 @@ C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\obj\Debu
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\obj\Debug\qualifiers.txt
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\obj\Debug\qualifiers.txt.intermediate
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\obj\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 C:\Users\riley\Documents\GitHub\BernieAppWindows\BernieApp.WindowsPhone\obj\Debug\ProjectArchitectures.txt
