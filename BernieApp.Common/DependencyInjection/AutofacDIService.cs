@@ -11,17 +11,14 @@ namespace BernieApp.Common.DependencyInjection
 {
     public class AutofacDIService : IDependencyInjectionService
     {
-        private IContainer _container;
-        private Func<INavigationService> _navConfigDelegate;
-        private bool _initialized;
+        private readonly IContainer _container;
 
-        private void Init()
+        public AutofacDIService(Action<ContainerBuilder> additionalBuildConfigurer = null)
         {
-            _initialized = true;
-
             var builder = new ContainerBuilder();
 
-            RegisterViewModels(builder);
+            builder.RegisterType(typeof(MainViewModel));
+            builder.RegisterType(typeof(NewsItemViewModel));
 
             if (ViewModelBase.IsInDesignModeStatic)
             {
@@ -33,46 +30,12 @@ namespace BernieApp.Common.DependencyInjection
                 builder.RegisterType<IssuesClient>().AsSelf();
                 builder.RegisterType<NewsClient>().AsSelf();
                 builder.RegisterType<BernieHttpClient>().As<IBernieHttpClient>();
-                var navSvc = CreateNavigationService();
-                if (navSvc != null)
-                {
-                    builder.RegisterInstance(CreateNavigationService()).As<INavigationService>();
-                }
+                additionalBuildConfigurer?.Invoke(builder);
             }
 
             _container = builder.Build();
-        }
-
-        private INavigationService CreateNavigationService()
-        {
-            if (_navConfigDelegate == null)
-            {
-                return null;
-            }
-
-            return _navConfigDelegate();
-        }
-
-        private static void RegisterViewModels(ContainerBuilder builder)
-        {
-            builder.RegisterType(typeof(MainViewModel));
-            builder.RegisterType(typeof(NewsItemViewModel));
         } 
 
-        public T Resolve<T>()
-        {
-            if (!_initialized)
-            {
-                Init();
-            }
-
-            return _container.Resolve<T>();
-        }
-
-        // todo : Improve this
-        public void ConfigureNavigationService(Func<IConfigurableNavigationService> navConfigDelegate)
-        {           
-            _navConfigDelegate = navConfigDelegate;
-        }
+        public T Resolve<T>() => _container.Resolve<T>();
     }
 }
